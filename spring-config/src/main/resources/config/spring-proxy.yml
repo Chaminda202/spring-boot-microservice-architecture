@@ -1,0 +1,25 @@
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+zuul:
+  ignoredServices: "*"
+  prefix: /api
+  routes:
+    employee:
+      path: /emp/**
+      service-id: employee-service
+      sensitiveHeaders:
+  retryable: false
+  
+swagger: 
+  config: 
+    refreshrate: 30000
+    
+logging:
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"

@@ -1,0 +1,8 @@
+zuul:
+  ignoredServices: "*"
+  prefix: /api
+  routes:
+    employee-service:
+      path: /employee/**
+      sensitiveHeaders:
+  retryable: false

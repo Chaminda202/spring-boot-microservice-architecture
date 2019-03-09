@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: employee-service
+        uri: lb://employee-service
+        predicates:
+        - Path=/emp/**
+        filters:
+        - RewritePath=/emp/(?<segment>.*), /rest/$\{segment}
